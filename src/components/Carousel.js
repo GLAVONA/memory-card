@@ -3,7 +3,12 @@ import Card from './Card';
 
 function Carousel (){
 
-    
+    return(
+        <div className="Carousel">
+        <Card />
+
+        </div>
+    )    
 }
 
 
