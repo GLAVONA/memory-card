@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import cardDataArray from "./CardData";
 import { images } from "./CardData";
+import '../styles/Carousel.css'
 
 function Carousel(props) {
   const [currentCards, setCurrentCards] = useState(cardDataArray);
+
 
   return (
     <div className="Carousel">

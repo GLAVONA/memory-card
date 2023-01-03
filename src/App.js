@@ -5,10 +5,6 @@ import Scoreboard from "./components/Scoreboard";
 
 function App(props) {
 
-  const [allCards, setAllCards] = useState([]);
-
-
-
   return (
     <div className="App">
       <div className="header">
