@@ -1,6 +1,9 @@
 import React from "react";
+import '../styles/Card.css'
+
 
 function Card(props){
+
 
     return(
         <div className="Card">
@@ -12,7 +15,6 @@ function Card(props){
             </div>
         </div>
     )
-
 }
 
 export default Card;

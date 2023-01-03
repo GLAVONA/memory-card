@@ -3,9 +3,11 @@ import "./styles/App.css";
 import Carousel from "./components/Carousel";
 import Scoreboard from "./components/Scoreboard";
 
-function App() {
+function App(props) {
 
-  
+  const [allCards, setAllCards] = useState([]);
+
+
 
   return (
     <div className="App">
