@@ -4,7 +4,6 @@ import Carousel from "./components/Carousel";
 import Scoreboard from "./components/Scoreboard";
 
 function App(props) {
-
   return (
     <div className="App">
       <div className="header">

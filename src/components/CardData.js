@@ -26,6 +26,7 @@ const cardDataArray = [
   { id: 5, name: "ChiknLittle.jpeg" },
   { id: 6, name: "CluckCluck9000.jpeg" },
   { id: 7, name: "Coluche.jpeg" },
+  { id: 8, name: "CoqAuVin.jpeg" },
   { id: 9, name: "CoqdArgent.jpeg" },
   { id: 10, name: "FireandIceCream.jpeg" },
   { id: 11, name: "LeCoqGrande.jpeg" },
