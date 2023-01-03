@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./styles/App.css";
+import Carousel from './components/Carousel';
 
 function App() {
 
   return (
-    <div>  
+    <div>
+    <div className="header">
+      <h1>Chikn Memory Game</h1>
+    </div>
+    <Carousel />    
     </div>
   );
 }

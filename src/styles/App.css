@@ -1,0 +1,13 @@
+#root,body,html{
+  margin: 0;
+  padding: 0;
+}
+
+
+.header>h1{
+  display: grid;
+  justify-content: center;
+  background-color: antiquewhite;
+  margin: 0;
+  padding: 1rem;
+}
