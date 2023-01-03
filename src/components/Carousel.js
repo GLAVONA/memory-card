@@ -9,11 +9,16 @@ function Carousel() {
 
   const [currentCards, setCurrentCards] = useState(allCards);
 
+  function getMultipleRandom(arr, num) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+  
+    return shuffled.slice(0, num);
+  }
 
-  const generateRandomIndex = () => {
-    const randomIndex = Math.random() * (currentCards.length - 0) + 0;
-    return parseInt(randomIndex);
-  };
+  useEffect(()=>{
+  setCurrentCards(getMultipleRandom(currentCards,5))
+
+  },[])
 
   return (
     <div className="Carousel">
