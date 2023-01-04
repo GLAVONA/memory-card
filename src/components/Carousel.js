@@ -3,13 +3,13 @@ import Card from "./Card";
 import cardDataArray from "./CardData";
 import { images } from "./CardData";
 import "../styles/Carousel.css";
-import { isCursorAtEnd } from "@testing-library/user-event/dist/utils";
 
 function Carousel(props) {
   const [allCards, setAllCards] = useState(cardDataArray);
   const [currentCards, setCurrentCards] = useState(allCards);
   const [selectedCards, setSelectedCards] = useState([]);
   const [level, setCurrentLevel] = useState(1);
+  const [gameOver, setGameOver] = useState(false);
 
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -17,9 +17,8 @@ function Carousel(props) {
   }
 
   function shuffleCurrent() {
-    const curr = currentCards;
-    const shuffled = curr.sort(() => 0.5 - Math.random());
-    setCurrentCards(shuffled);
+    const shuffled = currentCards.sort(() => 0.5 - Math.random());
+    return shuffled;
   }
 
   async function addNewCurrentCards() {
@@ -27,7 +26,7 @@ function Carousel(props) {
       (o1) => !currentCards.some((o2) => o1.id === o2.id)
     );
     const newCurr = getMultipleRandom(newCards, 2);
-    setCurrentCards((currentCards) => currentCards.concat(newCurr));
+    setCurrentCards((prev) => prev.concat(newCurr));
   }
 
   function getNumberOfCards() {
@@ -45,26 +44,41 @@ function Carousel(props) {
     }
   }
 
+  function resetGame() {
+    setSelectedCards([]);
+    setCurrentCards(getMultipleRandom(allCards, getNumberOfCards()));
+    setCurrentLevel(0);
+    setCurrentLevel(1);
+  }
+
   function nextLevel() {
     setCurrentLevel(level + 1);
     addNewCurrentCards();
     shuffleCurrent();
   }
-  function getTargetID(e) {
+  function pickCard(e) {
     console.log(e.target.id);
-    shuffleCurrent();
     setSelectedCards((selectedCards) => selectedCards.concat(e.target.id));
+    shuffleCurrent();
+    if (selectedCards.some((item) => item === e.target.id)) {
+      alert("OOOOPS!");
+      resetGame();
+    }
   }
 
   useEffect(() => {
-    setCurrentCards(getMultipleRandom(allCards, getNumberOfCards()));
-  }, []);
+    if (gameOver) {
+      setGameOver(false);
+    } else {
+      setCurrentCards(getMultipleRandom(currentCards, getNumberOfCards()));
+    }
+  }, [level]);
 
   return (
     <div className="Carousel">
       {currentCards.map((card) => {
         return (
-          <Card src={images[card.name]} id={card.id} targetId={getTargetID} />
+          <Card src={images[card.name]} id={card.id} targetId={pickCard} />
         );
       })}
       <button onClick={nextLevel}>Next level</button>
