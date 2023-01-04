@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/memory-card/static/css/main.ffe917a6.css",
-    "main.js": "/memory-card/static/js/main.9c809b3b.js",
+    "main.css": "/memory-card/static/css/main.c90009af.css",
+    "main.js": "/memory-card/static/js/main.032f421d.js",
     "static/media/Coluche.jpeg": "/memory-card/static/media/Coluche.74e630ecd925a2ee6726.jpeg",
     "static/media/TheKernel.jpeg": "/memory-card/static/media/TheKernel.ed983db5a3fb6a67d48b.jpeg",
     "static/media/LeCoqGrande.jpeg": "/memory-card/static/media/LeCoqGrande.61bc9d15d84cb80b22a1.jpeg",
@@ -20,11 +20,11 @@
     "static/media/BoredChiknYachtClub.jpeg": "/memory-card/static/media/BoredChiknYachtClub.7464fc180ebbd2d25540.jpeg",
     "static/media/Chikn1231.jpeg": "/memory-card/static/media/Chikn1231.4fed3ed0e795ea39885e.jpeg",
     "index.html": "/memory-card/index.html",
-    "main.ffe917a6.css.map": "/memory-card/static/css/main.ffe917a6.css.map",
-    "main.9c809b3b.js.map": "/memory-card/static/js/main.9c809b3b.js.map"
+    "main.c90009af.css.map": "/memory-card/static/css/main.c90009af.css.map",
+    "main.032f421d.js.map": "/memory-card/static/js/main.032f421d.js.map"
   },
   "entrypoints": [
-    "static/css/main.ffe917a6.css",
-    "static/js/main.9c809b3b.js"
+    "static/css/main.c90009af.css",
+    "static/js/main.032f421d.js"
   ]
 }
