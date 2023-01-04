@@ -15,10 +15,10 @@ function App(props) {
   return (
     <div className="App">
       <div className="header">
+      <Scoreboard />
         <h1>Chikn Memory Game</h1>
       </div>
       <Carousel />
-      <Scoreboard />
     </div>
   );
 }
