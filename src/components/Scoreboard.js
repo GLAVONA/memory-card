@@ -4,8 +4,11 @@ function Scoreboard(props){
 
     return(
         <div className="Scoreboard">
-            <h1>Score: {props.score}</h1>
-            <h1>High Score: {props.highscore}</h1>
+            <div className="score">
+                <div>Score: {props.score}</div>
+                <div>High Score: {props.highscore}</div>
+            </div>
+            <button onClick={props.clearHighScore}>Reset Highscore</button>
         </div>
     )
 

@@ -16,12 +16,21 @@
   position:relative;
   text-align: center;
   align-items: center;
-  
-  min-height: 8rem;
+  min-height: 10rem;
 }
 
 .Scoreboard{
   position:absolute;
   left: 1rem;
-  text-align: center;
+}
+
+.score{
+  font-size: 33px;
+  float: left;
+}
+
+.Scoreboard>button{
+  align-self: center;
+  width: 60px;
+  font-size: 10px;
 }
