@@ -10,6 +10,20 @@ function Carousel(props) {
   const [selectedCards, setSelectedCards] = useState([]);
   const [level, setCurrentLevel] = useState(1);
   const [gameOver, setGameOver] = useState(false);
+  const [animate, setAnimate] = useState(false);
+
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+      // Generate random number
+      var j = Math.floor(Math.random() * (i + 1));
+
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+
+    return array;
+  }
 
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -17,7 +31,8 @@ function Carousel(props) {
   }
 
   function shuffleCurrent() {
-    const shuffled = currentCards.sort(() => 0.5 - Math.random());
+    const shuffled = shuffleArray(currentCards);
+    setAnimate((anim) => !anim);
     return shuffled;
   }
 
@@ -29,7 +44,7 @@ function Carousel(props) {
     setCurrentCards((prev) => prev.concat(newCurr));
   }
 
-  function getNumberOfCards() {
+  function getNumberOfCards(lvl) {
     switch (level) {
       case 1:
         return 5;
@@ -48,23 +63,51 @@ function Carousel(props) {
     setSelectedCards([]);
     setCurrentCards(getMultipleRandom(allCards, getNumberOfCards()));
     setCurrentLevel(0);
+    props.setScore(0);
     setCurrentLevel(1);
   }
 
   function nextLevel() {
     setCurrentLevel(level + 1);
+    setSelectedCards([]);   
     addNewCurrentCards();
     shuffleCurrent();
   }
   function pickCard(e) {
-    console.log(e.target.id);
     setSelectedCards((selectedCards) => selectedCards.concat(e.target.id));
     shuffleCurrent();
     if (selectedCards.some((item) => item === e.target.id)) {
       alert("OOOOPS!");
       resetGame();
+    } else {
+      props.setScore(props.score + 1);
+      if (props.score >= props.highscore) {
+        props.setHighScore(props.score);
+      }
     }
   }
+
+  useEffect(() => {
+    if (props.score >= props.highscore) {
+      props.setHighScore(props.score);
+    }
+    switch (props.score) {
+      case 5:
+        nextLevel();
+        break;
+      case 7:
+        nextLevel();
+        break;
+      case 9:
+        nextLevel();
+        break;
+      case 11:
+        nextLevel();
+        break;
+      default:
+        break;
+    }
+  }, [props.score]);
 
   useEffect(() => {
     if (gameOver) {
@@ -78,10 +121,15 @@ function Carousel(props) {
     <div className="Carousel">
       {currentCards.map((card) => {
         return (
-          <Card src={images[card.name]} id={card.id} targetId={pickCard} />
+          <Card
+            onAnimationEnd={() => setAnimate(false)}
+            classname={animate ? "Card animate" : "Card"}
+            src={images[card.name]}
+            id={card.id}
+            targetId={pickCard}
+          />
         );
       })}
-      <button onClick={nextLevel}>Next level</button>
     </div>
   );
 }
